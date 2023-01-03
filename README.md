@@ -1,24 +1,31 @@
-# README
+# <城攻め>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+巡ったお城のお気入りスポットの写真や感想を投稿や閲覧を通して新しい何かを「発見」する
 
-Things you may want to cover:
+### テーマを選んだ理由
+自分がお城を巡ることが好きで、写真などを取っているのですが、自分が気に入った要所を撮影した写真や感想の投稿ができ、
+また一人一人違う目線で見たお城のお気に入りポイントを共有することで、新しい発見に気づき一段とお城巡りを楽しむことができることと
+興味を持つ人が増えるのではと思い、このテーマにしました。
 
-* Ruby version
+### ターゲットユーザ
+お城めぐりが好きな人、お城に興味がある人
 
-* System dependencies
+### 主な利用シーン
+巡ったお城に関する投稿を行う時、お城についての投稿を閲覧する時
 
-* Configuration
+## 設計書
 
-* Database creation
 
-* Database initialization
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* How to run the test suite
+## 使用素材
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
