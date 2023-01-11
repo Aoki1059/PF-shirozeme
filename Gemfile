@@ -62,6 +62,7 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+gem "jquery-rails"
 
 gem "net-smtp"
 gem "net-pop"

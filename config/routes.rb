@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     resources :posts, only:[:index, :show, :edit, :destroy, :create, :update]
+      resources :comments, only:[:create, :destroy]
     resources :bookmarks, only:[:index, :destroy, :create]
     resource :customers, only: [:index, :show, :edit, :update]
     get "/customers/unsubscribe" => "customers#unsubscribe"

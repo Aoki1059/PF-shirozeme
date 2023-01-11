@@ -1,0 +1,5 @@
+<%#= form_with(model:[posts, comment], local: false) do |f| %>
+<%= form_with(model:[post, comment], remote: true) do |f| %>
+  <%= f.text_area :comment, row:'5',placeholder: "コメントをここに", class: "w-100" %>
+  <%= f.submit "送信" %>
+<% end %>

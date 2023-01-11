@@ -12,28 +12,28 @@
   		<table class='table'>
   		  <tr>
           <td><%= link_to(customers_path) do %>
-            <!--<#%= image_tag @post.customer.get_profile_image, size:"50x50" %><br>-->
+            <%= image_tag @post.customer.get_profile_image, size:"50x50" %><br>
             <%= @post.customer.name %>
             <% end %>
           </td>
           <td><%= @post.castle %></td>
-          
+
           <td><%= @post.body %></td>
-          
+
           <td>コメント件数:<%= @post.comments.count %></td>
-          
+
           <% if @post.customer_id == current_customer.id %>
             <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
       </table>
-      
+
       <div id="comments-index">
-        <%#= render "comments/index", post: @post %>
+        <%= render "public/comments/index", post: @post %>
       </div>
       <div id="comments-form">
-        <%#= render "comments/form", post: @post, comment: @comment %>
+        <%= render "public/comments/form", post: @post, comment: @comment %>
       </div>
     </div>
   </div>

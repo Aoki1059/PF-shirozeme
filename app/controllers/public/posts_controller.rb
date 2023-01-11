@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  
   def show
     @post = Post.find(params[:id])
     @post_new = Post.new
