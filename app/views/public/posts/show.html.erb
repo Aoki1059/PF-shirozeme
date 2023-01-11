@@ -1,2 +1,40 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2 class="mt-3">見どころ投稿</h2>
+      <%= render 'form', post: @post_new %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>見どころ</h2>
+  		<div>
+  		  <p><%= image_tag @post.get_image, size:"700x400" %></p>
+  		</div>
+  		<table class='table'>
+  		  <tr>
+          <td><%= link_to(customers_path) do %>
+            <!--<#%= image_tag @post.customer.get_profile_image, size:"50x50" %><br>-->
+            <%= @post.customer.name %>
+            <% end %>
+          </td>
+          <td><%= @post.castle %></td>
+          
+          <td><%= @post.body %></td>
+          
+          <td>コメント件数:<%= @post.comments.count %></td>
+          
+          <% if @post.customer_id == current_customer.id %>
+            <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <% end %>
+        </tr>
+      </table>
+      
+      <div id="comments-index">
+        <%#= render "comments/index", post: @post %>
+      </div>
+      <div id="comments-form">
+        <%#= render "comments/form", post: @post, comment: @comment %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,8 @@
 class Public::PostsController < ApplicationController
   def show
+    @post = Post.find(params[:id])
+    @post_new = Post.new
+    @comment = Comment.new
   end
 
   def index
@@ -9,7 +12,7 @@ class Public::PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post.customer_id = current_customer.id
     if @post.save
       redirect_to post_path(@post), notice: "投稿が完了しました！"
     else
