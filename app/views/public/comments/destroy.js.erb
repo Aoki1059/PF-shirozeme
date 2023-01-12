@@ -1,3 +1,1 @@
-$("#comments-index").html("<%= j(render 'comments/index', post: @post) %>");
-$("#comments-form").html("<%= j(render 'comments/form', post: @post, comment: @comment) %>");
-$("textarea").val('');
+$("#comment__line--<%= @comment.id %>").remove();

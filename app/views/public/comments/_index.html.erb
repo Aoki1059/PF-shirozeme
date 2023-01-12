@@ -1,15 +1,7 @@
 <table>
-  <% post.comments.each do |comment| %>
-    <tr>
-      <td><%= link_to(comment.customer) do %>
-        <%= image_tag comment.customer.get_profile_image, size:"50x50" %><br>
-        <%= comment.customer.name %>
-        <% end %>
-      </td>
-      <td><%= comment.comment %></td>
-      <% if comment.customer_id == current_customer.id %>
-        <td><%= link_to '削除', post_comment_path(post,comment), method: :delete, remote: true, class: "btn btn-sm btn-danger"%></td>
+  <tbody id="comment__lines">
+      <% post.comments.each do |comment| %>
+        <%= render 'public/comments/comment', comment: comment %>
       <% end %>
-    </tr>
-  <% end %>
+  </tbody>
 </table>

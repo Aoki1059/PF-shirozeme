@@ -19,16 +19,17 @@
           <td><%= @post.castle %></td>
 
           <td><%= @post.body %></td>
-
-          <td>コメント件数:<%= @post.comments.count %></td>
-
+          
+          <td class="comments-counter">
+            <%= render "public/comments/counter", post: @post %>
+          </td>
+          
           <% if @post.customer_id == current_customer.id %>
             <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
       </table>
-
       <div id="comments-index">
         <%= render "public/comments/index", post: @post %>
       </div>

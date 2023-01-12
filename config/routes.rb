@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   namespace :public do
     get 'notifications/index'
   end
@@ -7,13 +7,15 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   scope module: :public do
     root to: "homes#top"
-    resources :posts, only:[:index, :show, :edit, :destroy, :create, :update]
-      resources :comments, only:[:create, :destroy]
+    resources :posts, only:[:index, :show, :edit, :destroy, :create, :update] do
+      resources :comments, only: [:create]
+    end
+    resources :comments, only: [:destroy]
     resources :bookmarks, only:[:index, :destroy, :create]
-    resource :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
     get "/customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
     get "search" => "searches#search"
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   namespace :admin do
     get '/' => "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]

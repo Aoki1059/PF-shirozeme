@@ -1,0 +1,19 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>会員名</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% customers.each do |customer| %>
+      <tr>
+        <td><%= image_tag customers.get_profile_image, size: '50x50' %></td>
+        <td><%= customer.name %></td>
+        
+        <td><%= link_to '会員詳細', customer_path(customer) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,14 @@
+<tr id="comment__line--<%= comment.id %>" >
+  <td>
+    <%= link_to customer_path(comment.customer) do %>
+      <%= image_tag comment.customer.get_profile_image, size: "100x100" %><br>
+      <%= comment.customer.name %>
+    <% end %>
+  </td>
+  <td><%= comment.comment %></td>
+  <td>
+    <% if comment.customer == current_customer %>
+      <%= link_to "削除", comment_path(comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+    <% end %>
+  </td>
+</tr>
