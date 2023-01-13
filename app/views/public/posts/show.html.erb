@@ -11,8 +11,8 @@
   		</div>
   		<table class='table'>
   		  <tr>
-          <td><%= link_to(customers_path) do %>
-            <%= image_tag @post.customer.get_profile_image, size:"50x50" %><br>
+  		    <td><%= link_to(@post.customer) do %>
+            <%= image_tag @post.customer.get_profile_image, size:"100x100" %><br>
             <%= @post.customer.name %>
             <% end %>
           </td>

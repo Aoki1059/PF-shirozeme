@@ -9,14 +9,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def index
-    @customers = customer.all
+    @customers = Customer.all
     @post = Post.new
     @posts = Post.all
     @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(:params[:id])
+    @customer = Customer.find(params[:id])
     @customer = current_customer
   end
   

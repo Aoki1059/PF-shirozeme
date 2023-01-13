@@ -1,2 +1,12 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2><%= @customer.name %>さんの会員詳細</h2>
+      <%= render 'info', customer: @customer %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h2>投稿</h2>
+      <%= render 'admin/posts/index',posts: @posts %>
+    </div>
+  </div>
+</div>

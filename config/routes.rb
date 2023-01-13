@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:destroy]
     resources :bookmarks, only:[:index, :destroy, :create]
-    resources :customers, only: [:index, :show, :edit, :update]
     get "/customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
+    resources :customers, only: [:index, :show, :edit, :update]
     get "search" => "searches#search"
   end
 
@@ -27,8 +27,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => "homes#top"
+    patch "/customers/withdraw" => "customers#withdraw"
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :posts, only:[:index, :show]
+    resources :posts, only:[:index, :show, :destroy]
     get "search" => "searches#search"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -24,7 +24,10 @@ class Customer < ApplicationRecord
      @customer = Customer.all
    end
   end
-
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'busyou.png'

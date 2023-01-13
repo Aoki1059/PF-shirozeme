@@ -12,7 +12,7 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy if @comment
   end
-
+  
   private
 
   def comment_params

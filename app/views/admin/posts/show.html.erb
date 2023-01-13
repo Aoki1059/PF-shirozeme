@@ -1,2 +1,20 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>見どころ</h2>
+  		<div>
+  		  <p><%= image_tag @post.get_image, size:"700x400" %></p>
+  		</div>
+  		<table class='table'>
+  		  <tr>
+  		    <td><%= @post.customer.name %></td>
+          <td><%= @post.castle %></td>
+
+          <td><%= @post.body %></td>
+
+          <td><%= link_to '削除する', admin_posts_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
