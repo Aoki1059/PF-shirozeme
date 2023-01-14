@@ -17,12 +17,15 @@
             <% end %>
           </td>
           <td><%= @post.castle %></td>
-
-          <td><%= @post.body %></td>
           
           <td class="comments-counter">
             <%= render "public/comments/counter", post: @post %>
           </td>
+          <% if @post.bookmarked_by?(current_customer) %>
+            <td><%= link_to "ブックマーク解除", post_bookmark_path(@post), method: :delete %></td>
+          <% else %>
+            <td><%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %></td>
+          <% end %>
           
           <% if @post.customer_id == current_customer.id %>
             <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
@@ -30,11 +33,14 @@
           <% end %>
         </tr>
       </table>
-      <div id="comments-index">
-        <%= render "public/comments/index", post: @post %>
+      <div>
+        <%= @post.body %>
       </div>
       <div id="comments-form">
         <%= render "public/comments/form", post: @post, comment: @comment %>
+      </div>
+      <div id="comments-index">
+        <%= render "public/comments/index", post: @post %>
       </div>
     </div>
   </div>

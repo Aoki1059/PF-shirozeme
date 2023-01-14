@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     resources :posts, only:[:index, :show, :edit, :destroy, :create, :update] do
+      resources :bookmarks, only: [:index, :create, :destroy]
       resources :comments, only: [:create]
     end
     resources :comments, only: [:destroy]
-    resources :bookmarks, only:[:index, :destroy, :create]
     get "/customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
     resources :customers, only: [:index, :show, :edit, :update]

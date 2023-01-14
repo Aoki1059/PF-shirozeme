@@ -4,11 +4,13 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_new = Post.new
     @comment = Comment.new
+    @customer = current_customer
   end
 
   def index
     @posts = Post.all
     @post = Post.new
+    @customer = current_customer
   end
   
   def create

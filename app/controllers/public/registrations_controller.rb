@@ -7,11 +7,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   protected
     def after_sign_up_path_for(resource)
-     customers_path
+     customer_path(@customer)
     end
 
   def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
 
   # GET /resource/sign_up

@@ -7,13 +7,14 @@ class Customer < ApplicationRecord
   has_one_attached :profile_image
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   
   validates :name, length: { minimum: 1, maximum: 20 }, uniqueness: true
   validates :introduction, length: {maximum: 50}
   
   def self.looks(search, word)
    if search == "perfect_match" #完全一致
-     @customer = Customer.where("name LIKE?", "#{word}")
+     @customer = Customer.where("name LIKE?","#{word}")
    elsif search == "forward_match" #前方一致
      @customer = Customer.where("name LIKE?","#{word}%")
    elsif search == "backward_match" #後方一致
