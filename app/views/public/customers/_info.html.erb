@@ -24,10 +24,9 @@
     <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post %>
   <% end %>
 <% end %>
-<div>
+
+<% if customer == current_customer %>
   <%= link_to "編集", edit_customer_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
   <%= link_to "退会", customers_unsubscribe_path, data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger ml-4"%>
-</div>
-<div>
   <%= link_to "ブックマーク一覧", post_bookmarks_path(@post), class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
-</div>
+<% end %>

@@ -6,7 +6,8 @@ before_action :authenticate_admin!
   end
 
   def index
-    @posts = Post.all.page(params[:page]).per(10)
+    @posts = Post.where(is_deleted: false)
+    @posts = Post.all.page(params[:page]).per(9)
   end
 
   def destroy
