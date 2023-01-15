@@ -13,7 +13,7 @@ class Public::SessionsController < Devise::SessionsController
     def after_sign_out_path_for(resource)
       new_customer_session_path
     end
-    
+
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer

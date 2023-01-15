@@ -6,7 +6,6 @@ before_action :authenticate_customer!
     @posts = @customer.posts
     @post = Post.new
     @post = Post.all
-    @customer = current_customer
   end
 
   def index

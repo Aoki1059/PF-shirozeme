@@ -8,7 +8,22 @@
 	  <th>自己紹介</th>
 	  <th><%= customer.introduction %></th>
   </tr>
+  <tr>
+    <th>フォロワー</th>
+    <th><%= link_to customer.followings.count, customer_followings_path(customer.id) %></th>
+  </tr>
+  <tr>
+    <th>フォロー数</th>
+    <th><%= link_to customer.followers.count, customer_followers_path(customer.id) %></th>
+  </tr>
 </table>
+<% unless current_customer == customer %>
+  <% if current_customer.following?(customer) %>
+    <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete %>
+  <% else %>
+    <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post %>
+  <% end %>
+<% end %>
 <div>
   <%= link_to "編集", edit_customer_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
   <%= link_to "退会", customers_unsubscribe_path, data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger ml-4"%>

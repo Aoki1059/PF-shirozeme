@@ -11,7 +11,18 @@
       <tr>
         <td><%= image_tag customer.get_profile_image, size: '50x50' %></td>
         <td><%= customer.name %></td>
-        
+        <td>フォロー数<%= customer.followings.count %></td>
+        <td>フォロワー数<%= customer.followers.count %></td>
+        <td>
+          <% unless current_customer == customer %>
+           <% if current_customer.following?(customer) %>
+             <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete,class: "btn btn-info" %>
+           <% else %>
+             <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post,class: "btn btn-success" %>
+           <% end %>
+          <% end %>
+        </td>
+
         <td><%= link_to '会員詳細', customer_path(customer) %></td>
       </tr>
     <% end %>

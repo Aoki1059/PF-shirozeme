@@ -17,7 +17,7 @@
             <% end %>
           </td>
           <td><%= @post.castle %></td>
-          
+
           <td class="comments-counter">
             <%= render "public/comments/counter", post: @post %>
           </td>
@@ -26,7 +26,7 @@
           <% else %>
             <td><%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %></td>
           <% end %>
-          
+
           <% if @post.customer_id == current_customer.id %>
             <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>

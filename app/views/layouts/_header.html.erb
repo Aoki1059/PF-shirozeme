@@ -21,7 +21,7 @@
               </li>
             <% elsif customer_signed_in? %>
               <li>
-                <%= link_to "マイページ", customer_path(@customer), class: 'nav-link text-light' %>
+                <%= link_to "マイページ", customer_path(current_customer), class: 'nav-link text-light' %>
               </li>
               <li>
                 <%= link_to "会員一覧", customers_path, class: 'nav-link text-light' %>
