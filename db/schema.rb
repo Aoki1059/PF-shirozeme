@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2023_01_10_072950) do
     t.integer "customer_id", null: false
     t.string "castle", null: false
     t.text "body", null: false
-    t.boolean "is_published_flag", default: false, null: false
+    t.boolean "is_published_flag", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

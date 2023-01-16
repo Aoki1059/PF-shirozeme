@@ -10,6 +10,14 @@
     <%= f.text_area :body, class: 'form-control', placeholder:"ここにコメント" %>
   </div>
 
+  <div>
+    <%= f.label :is_published_flag, "公開", value: true %>
+    <%= f.radio_button :is_published_flag, 'true' %>
+  </div>
+  <div>
+    <%= f.label :is_published_flag, "非公開", value: false %>
+    <%= f.radio_button :is_published_flag,'false' %>
+  </div>
   <div class="form-group">
     <%= f.submit '投稿する', class: 'btn btn-success' %>
   </div>

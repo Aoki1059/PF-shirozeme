@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
-  
-  before_action :authenticate_customer!
-  
+
+  before_action :authenticate_customer!, only: [:create, :edit, :update, :destroy]
+
   def show
     @post = Post.find(params[:id])
     @post_new = Post.new
@@ -10,11 +10,12 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    #@posts = Post.all
+    @posts = Post.published
     @post = Post.new
     @customer = current_customer
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
@@ -25,7 +26,7 @@ class Public::PostsController < ApplicationController
       render 'index'
     end
   end
-  
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -47,6 +48,6 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:castle, :image, :body)
+    params.require(:post).permit(:castle, :image, :body, :is_published_flag)
   end
 end
