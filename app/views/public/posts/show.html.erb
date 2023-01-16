@@ -1,11 +1,7 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <h2 class="mt-3">見どころ投稿</h2>
-      <%= render 'form', post: @post_new %>
-    </div>
-    <div class='col-md-8 offset-md-1'>
-  		<h2>見どころ</h2>
+    <div class='col-md-7'>
+      <h2 class="mt-3">見どころ</h2>
   		<div>
   		  <p><%= image_tag @post.get_image, size:"700x400" %></p>
   		</div>
@@ -33,14 +29,18 @@
           <% end %>
         </tr>
       </table>
+      <h5>感想</h5>
       <div>
         <%= @post.body %>
       </div>
-      <div id="comments-form">
-        <%= render "public/comments/form", post: @post, comment: @comment %>
-      </div>
-      <div id="comments-index">
-        <%= render "public/comments/index", post: @post %>
+      <div class='col-md-4 offset-md-1'>
+        
+        <div id="comments-form">
+         <%= render "public/comments/form", post: @post, comment: @comment %>
+        </div>
+        <div id="comments-index">
+          <%= render "public/comments/index", post: @post %>
+        </div>
       </div>
     </div>
   </div>

@@ -29,8 +29,10 @@
               <li>
                 <%= link_to "みなさんの投稿", posts_path, class: 'nav-link text-light' %>
               </li>
-              <li>
-                <%= "通知" %>
+              <li class="notification"><%= link_to '通知', notifications_path, class: 'nav-link text-light'  %>
+                <% if unchecked_notifications.any? %>
+                  <i class="fa fa-circle notification-circle"></i>
+                <% end %>
               </li>
               <li>
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>

@@ -1,20 +1,23 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'notifications/index'
-  end
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  end
 
   scope module: :public do
     root to: "homes#top"
+    resources :notifications, only: :index
     resources :posts, only:[:index, :show, :edit, :destroy, :create, :update] do
       resources :bookmarks, only: [:index, :create, :destroy]
       resources :comments, only: [:create]
     end
     resources :comments, only: [:destroy]
+    delete "/notifications/destroy_all" => "notifications#destroy_all", as: "destroy_all_notifications"
     get "/customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
     resources :customers, only: [:index, :show, :edit, :update] do

@@ -6,6 +6,9 @@
       <p>みなさんで城を楽しみませんか？</p>
       <div class="btn-wrapper col-5 mx-auto">
         <div class="row">
+          <%= link_to 'ゲストログイン', customers_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        </div>
+        <div class="row">
           <%= link_to 'ロ グ イ ン',new_customer_session_path, class: "btn btn-outline-info btn-block mb-3 sign_in" %>
         </div>
         <div class="row">

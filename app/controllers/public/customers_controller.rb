@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
-before_action :authenticate_customer!
+  before_action :authenticate_customer!
+  before_action :ensure_guest_customer, only: [:edit]
   
   def show
     @customer = Customer.find(params[:id])
@@ -9,15 +10,14 @@ before_action :authenticate_customer!
   end
 
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page]).per(5)
     @post = Post.new
     @posts = Post.all
-    @customer = current_customer
+    @customers = Customer.where(is_deleted: false)
   end
 
   def edit
     @customer = Customer.find(params[:id])
-    @customer = current_customer
   end
   
   def update
@@ -45,5 +45,12 @@ before_action :authenticate_customer!
 
   def customer_params
     params.require(:customer).permit(:name, :introduction, :profile_image)
+  end
+  
+  def ensure_guest_customer
+    @customer = Customer.find(params[:id])
+    if @customer.name == "ゲスト"
+      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
   end
 end

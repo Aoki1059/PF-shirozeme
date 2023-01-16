@@ -30,7 +30,7 @@ before_action :authenticate_admin!
     @customer = Customer.find(params[:format])
     @customer.update(is_deleted: true)
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to admin_customer_path(@customer)
+    redirect_to admin_customers_path(@customer)
   end
 
   def customer_params

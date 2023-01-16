@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
   
+  before_action :authenticate_customer!
+  
   def show
     @post = Post.find(params[:id])
     @post_new = Post.new
