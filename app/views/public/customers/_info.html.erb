@@ -9,11 +9,11 @@
 	  <th><%= customer.introduction %></th>
   </tr>
   <tr>
-    <th>フォロワー</th>
+    <th>フォロー数</th>
     <th><%= link_to customer.followings.count, customer_followings_path(customer.id) %></th>
   </tr>
   <tr>
-    <th>フォロー数</th>
+    <th>フォロワー数</th>
     <th><%= link_to customer.followers.count, customer_followers_path(customer.id) %></th>
   </tr>
 </table>
@@ -29,10 +29,5 @@
   <%= link_to "編集", edit_customer_path, class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
   <%= link_to "退会", customers_unsubscribe_path, data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger ml-4"%>
   <%= link_to "ブックマーク一覧", post_bookmarks_path(@post), class: "glyphicon glyphicon-pencil btn btn-success ml-4" %>
-<% end %>
-
-<% if customer.name != "ゲスト" %>
-<div class='row'>
-  <%= link_to '編集',edit_customer_path(customer),class: "btn btn-outline-secondary btn-block edit_customer_#{customer.id}" %>
-</div>
+<% else user.name != "ゲスト" %>
 <% end %>

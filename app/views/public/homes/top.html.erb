@@ -1,17 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class='mx-auto text-center'>
-      <h1><strong>いざ、城攻め</strong></h1>
-      <p>城が大好きな人、趣味を探している人、外出を考えている人</p>
-      <p>みなさんで城を楽しみませんか？</p>
-      <div class="btn-wrapper col-5 mx-auto">
-        <div class="row">
+<div>
+  <div>
+    <div>
+      <h1 class="title"><strong>いざ、城攻め</strong></h1>
+      <p class="subtitle1">城が大好きな人、趣味を探している人、外出を考えている人</p>
+      <p class="subtitle2">みなさんで城を楽しみませんか？</p>
+      <div class="btn-wrapper">
+        <div class="list1">
           <%= link_to 'ゲストログイン', customers_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
         </div>
-        <div class="row">
+        <div class="list2">
           <%= link_to 'ロ グ イ ン',new_customer_session_path, class: "btn btn-outline-info btn-block mb-3 sign_in" %>
         </div>
-        <div class="row">
+        <div class="list3">
           <%= link_to '新 規 登 録',new_customer_registration_path, class: "btn btn-outline-success btn-block sign_up" %>
         </div>
       </div>

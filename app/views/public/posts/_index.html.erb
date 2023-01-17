@@ -1,23 +1,17 @@
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th></th>
-      <th>城名</th>
-      <th>見どころ</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% posts.each do |post| %>
-      <tr>
-        <td>
-          <%= link_to post_path(post.id) do %>
-            <%= image_tag post.image, size: "100x100" %>
-          <% end %>
-        </td>
-        <td><%= post.castle %></td>
-        <td><%= post.body %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class='row'>
+  <% posts.each do |post| %>
+    <div class='col-md-3 mt-5'>
+      <div class='img_field'>
+        <%= link_to post_path(post.id) do %>
+          <%= image_tag post.image, size: "150x150" %>
+        <% end %>
+      </div>
+      <p class='castle'>
+        <%= post.castle %>
+      </p>
+      <p class='body'>
+        <%= post.body %>
+      </p>
+    </div>
+  <% end %>
+</div>
