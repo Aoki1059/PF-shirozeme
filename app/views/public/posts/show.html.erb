@@ -2,34 +2,33 @@
   <div class='row'>
 
     <div class='col-md-6'>
-      <h2 class="mt-3">見どころ</h2>
+      <h2 class="mt-3 text-center">見どころ</h2>
   		<div class="text-center">
   		  <p><%= image_tag @post.get_image, size:"700x400" %></p>
   		</div>
   		<table class='table text-center'>
   		  <tr>
-  		    <td><%= link_to(@post.customer) do %>
-            <%= image_tag @post.customer.get_profile_image, size:"50x50" %><br>
+  		    <td class="h5 pt-4"><%= link_to(@post.customer) do %>
             <%= @post.customer.name %>
             <% end %>
           </td>
-          <td><%= @post.castle %></td>
+          <td class="h5 pt-4"><%= @post.castle %></td>
 
           <% if @post.bookmarked_by?(current_customer) %>
-            <td><%= link_to "ブックマーク解除", post_bookmark_path(@post), method: :delete %></td>
+            <td class="h5 pt-4"><%= link_to "ブックマーク解除", post_bookmark_path(@post), method: :delete %></td>
           <% else %>
-            <td><%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %></td>
+            <td class="h5 pt-4"><%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %></td>
           <% end %>
 
           <% if @post.customer_id == current_customer.id %>
-            <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+            <td class="h5 pt-4"><%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
+            <td class="h5 pt-4"><%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
       </table>
       <div style="margin-left: 90px;">
-        <h5>感想</h5>
-        <div>
+        <h5>感想 :</h5>
+        <div class="h5">
           <%= @post.body %>
         </div>
       </div>
@@ -41,11 +40,12 @@
           <div id="comments-index">
             <%= render "public/comments/index", post: @post %>
           </div>
-          <div id="comments-form" class="text-center" style="position: fixed; bottom: 100px; width: 600px;">
+          <div id="comments-form" class="text-center" style="position: fixed; bottom: 175px; width: 600px;">
             <%= render "public/comments/form", post: @post, comment: @comment %>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <%= paginate @comments %>
 <!--</div>-->
