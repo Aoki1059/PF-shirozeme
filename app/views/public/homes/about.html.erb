@@ -1,17 +1,37 @@
+<header class="bg-secondary text-monospace">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container ">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <%= link_to "ホーム", root_path, class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_customer_registration_path, data: {"turbolinks" => false}, class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
 <div class="container">
   <div class="row mt-5">
     <div class="col-sm-12 px-sm-0 offset-sm-1" >
       <div class="about">
         <h1 class="about-title text-secondary">About</h1>
         <p class="about-comment text-secondary">
-          ながのCakeは全国発送可能なケーキ屋さんです。<br>
-          お子様からお年寄りの方までお召し上がりいただけるよう、<br>
-          様々なバリエーションをご用意しております。<br>
-          また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
-          ぜひ、ご注文ください。
+          このサイトはお城に興味がある人、趣味を探している人、外出を考えている人<br>
+          向けのちょっぴりハードルの低いSNSサイトとなっております。<br>
+          お城に関する投稿を通して、ユーザーの生活の楽しみが少しでも増える助けとなれば幸いです。<br>
         </p>
         <div style="text-align: center; ">
-          <%= image_tag "top_image6.jpeg", style: "width: 500px; height: 300px;" %>
+          <%= image_tag "about.jpg", style: "width: 500px; height: 300px;" %>
         </div>
       </div>
     </div>
