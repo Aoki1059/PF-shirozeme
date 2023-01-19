@@ -6,43 +6,42 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-            <% if admin_signed_in? %>
-              <li>
-                <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-light' %>
-              </li>
-              <li >
-                <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-light'  %>
-              </li>
-              <li>
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
-              </li>
-              <li class="nav-link">
-                <%= render 'admin/searches/search' %>
-              </li>
-            <% elsif customer_signed_in? %>
-              <li>
-                <%= link_to "マイページ", customer_path(current_customer), class: 'nav-link text-light' %>
-              </li>
-              <li>
-                <%= link_to "会員一覧", customers_path, class: 'nav-link text-light' %>
-              </li>
-              <li>
-                <%= link_to "みなさんの投稿", posts_path, class: 'nav-link text-light' %>
-              </li>
-              <li class="notification"><%= link_to '通知', notifications_path, class: 'nav-link text-light'  %>
-                <% if unchecked_notifications.any? %>
-                  <i class="fa fa-circle notification-circle"></i>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
-              </li>
-              <li class="nav-link">
-                <%= render 'public/searches/search' %>
-              </li>
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-light' %>
+            </li>
+            <li >
+              <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-light'  %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-link">
+              <%= render 'admin/searches/search' %>
+            </li>
+          <% elsif customer_signed_in? %>
+            <li>
+              <%= link_to "マイページ", customer_path(current_customer), class: 'nav-link text-light' %>
+            </li>
+            <li>
+              <%= link_to "会員一覧", customers_path, class: 'nav-link text-light' %>
+            </li>
+            <li>
+              <%= link_to "投稿＆一覧", posts_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="notification"><%= link_to '通知', notifications_path, class: 'nav-link text-light'  %></li>
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle notification-circle pr-2"></i>
             <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+            <li>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-link">
+              <%= render 'public/searches/search' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

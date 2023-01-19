@@ -7,6 +7,7 @@
     <div class='col-md-8 offset-md-1'>
       <h2>投稿した見どころ</h2>
       <%= render 'public/posts/index',posts: @posts %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

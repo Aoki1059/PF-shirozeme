@@ -1,15 +1,16 @@
 <div class='row'>
   <% posts.each do |post| %>
-    <div class='col-md-3 mt-5'>
+    <div class='col-md-3 mr-5 mt-5'>
       <div class='img_field'>
         <%= link_to post_path(post.id) do %>
-          <%= image_tag post.image, size: "150x150" %>
+          <%= image_tag post.image, size: "235x135" %>
         <% end %>
       </div>
-      <p class='castle'>
-        <%= post.castle %>
+      <p class='castle mt-2'>
+        城名: <%= post.castle %>
       </p>
-      <p class='body'>
+      <p class='body text-truncate'>
+        感想<br>
         <%= post.body %>
       </p>
     </div>
