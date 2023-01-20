@@ -7,7 +7,7 @@
   <td class="">: <%= comment.comment %></td>
   <td class="text-right">
     <% if comment.customer == current_customer %>
-      <%= link_to "削除", comment_path(comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+      <%= link_to "削除", comment_path(comment), method: :delete, class: "btn btn-sm btn-danger rounded-pill pull-right", remote: true %>
     <% end %>
   </td>
 </tr>

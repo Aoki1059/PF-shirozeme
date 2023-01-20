@@ -1,10 +1,10 @@
-<table class="table table-bordered">
-  <tr><%= image_tag customer.get_profile_image, size:'200x200' %></tr>
+<div class="profile_image text-center"><%= image_tag customer.get_profile_image, size:'250x250' %></div>
+<table class="table mt-4 table">
   <tr>
 	  <th>会員名: <%= customer.name %></th>
   </tr>
   <tr>
-	  <th>自己紹介<br><%= customer.introduction %></th>
+	  <th style="word-wrap: break-word; width: 100px;">自己紹介<br><%= customer.introduction %></th>
   </tr>
   <tr>
     <th>フォロー数:<%= link_to customer.followings.count, customer_followings_path(customer.id) %></th>
@@ -17,9 +17,9 @@
 <div class="text-center">
 <% unless current_customer == customer %>
   <% if current_customer.following?(customer) %>
-    <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete %>
+    <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "btn btn-info rounded-pill" %>
   <% else %>
-    <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post %>
+    <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class: "btn btn-success rounded-pill" %>
   <% end %>
 <% end %>
 </div>
@@ -28,6 +28,6 @@
 <% if customer == current_customer %>
   <p><%= link_to "　　　編集　　　", edit_customer_path, class: "glyphicon glyphicon-pencil btn btn-success rounded-pill" %></p>
   <p><%= link_to "　　　退会　　　", customers_unsubscribe_path, data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger rounded-pill"%></p>
-  <p><%= link_to "ブックマーク一覧", post_bookmarks_path(@post), class: "glyphicon glyphicon-pencil btn btn-success rounded-pill" %></p>
+  <p><%= link_to "ブックマーク一覧", post_bookmarks_path(@post), class: "glyphicon glyphicon-pencil btn btn-dark rounded-pill" %></p>
 <% end %>
 </div>
