@@ -15,11 +15,11 @@ class Public::RelationshipsController < ApplicationController
 
   def followings
     customer = Customer.find(params[:customer_id])
-    @customers = customer.followings
+    @customers = customer.followings.page(params[:page]).per(5)
   end
 
   def followers
     customer = Customer.find(params[:customer_id])
-    @customers = customer.followers
+    @customers = customer.followers.page(params[:page]).per(5)
   end
 end

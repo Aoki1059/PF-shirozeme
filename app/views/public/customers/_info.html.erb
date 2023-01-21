@@ -7,10 +7,10 @@
 	  <th class="col-xs-3" style="word-wrap: break-word; width: 200px;">自己紹介<br><%= customer.introduction %></th>
   </tr>
   <tr>
-    <th>フォロー数:<%= link_to customer.followings.count, customer_followings_path(customer.id) %></th>
+    <th>フォロー : <%= link_to customer.followings.count, customer_followings_path(customer.id) %></th>
   </tr>
   <tr>
-    <th>フォロワー数:<%= link_to customer.followers.count, customer_followers_path(customer.id) %></th>
+    <th>フォロワー : <%= link_to customer.followers.count, customer_followers_path(customer.id) %></th>
   </tr>
 </table>
 

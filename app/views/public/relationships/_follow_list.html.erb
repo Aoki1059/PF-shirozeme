@@ -9,14 +9,14 @@
         <th></th>
       </tr>
       <tr>
-        <td><%= image_tag customer.get_profile_image, size: '50x50' %></td>
-        <td><%= customer.name %></td>
-        <td>フォロー数：<%= customer.followings.count %></td>
-        <td>フォロワー数：<%= customer.followers.count %></td>
-        <td><%= link_to "会員詳細", customer_path(customer) %></td>
+        <td><%= image_tag customer.get_profile_image, size: '100x100' %></td>
+        <td class="pt-5"><%= customer.name %></td>
+        <td class="pt-5">フォロー数：<%= customer.followings.count %></td>
+        <td class="pt-5">フォロワー数：<%= customer.followers.count %></td>
+        <td class="pt-5"><%= link_to "会員詳細", customer_path(customer) %></td>
       </tr>
     </table>
   <% end %>
 <% else %>
-  <p>ユーザーはいません</p>
+  <p class="h3">ユーザーはいません</p>
 <% end %>

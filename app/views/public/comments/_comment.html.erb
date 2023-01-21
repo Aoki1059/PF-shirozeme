@@ -1,10 +1,10 @@
 <tr id="comment__line--<%= comment.id %>" >
-  <td>
+  <td class="pt-2" style="font-size: 20px;">
     <%= link_to customer_path(comment.customer) do %>
       <%= comment.customer.name %>
     <% end %>
   </td>
-  <td class="">: <%= comment.comment %></td>
+  <td style="font-size: 20px;">: <%= comment.comment %></td>
   <td class="text-right">
     <% if comment.customer == current_customer %>
       <%= link_to "削除", comment_path(comment), method: :delete, class: "btn btn-sm btn-danger rounded-pill pull-right", remote: true %>

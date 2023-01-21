@@ -13,7 +13,6 @@ module Public::NotificationsHelper
         "#{visiter}があなたをフォローしました"
       when "comment" then
         @comment=Comment.find_by(id:notification.comment_id)
-        # @comment=Comment.find_by(id:notification.comment_id)&.content
         "#{visiter}が#{your_post}にコメントしました"
     end
   end
