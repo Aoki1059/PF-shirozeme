@@ -27,7 +27,7 @@
       </table>
       <div style="margin-left: 50px;">
         <h5>感想 :</h5>
-        <div class="h5 text-warp" style="width: 6rem;">
+        <div class="h5 col-xs-4" style="word-wrap: break-word; width: 750px;">
           <%= @post.body %>
         </div>
       </div>
@@ -38,8 +38,8 @@
         <div class='col-md-8'>
           <div id="comments-index">
             <%= render "public/comments/index", post: @post %>
-            <%= paginate @comments %>
           </div>
+          <div style="position: fixed; bottom: 375px;"><%= paginate @comments %></div>
           <div id="comments-form" class="text-center" style="position: fixed; bottom: 175px; width: 600px;">
             <%= render "public/comments/form", post: @post, comment: @comment %>
           </div>

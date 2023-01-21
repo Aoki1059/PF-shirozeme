@@ -1,10 +1,10 @@
 <div class="profile_image text-center"><%= image_tag customer.get_profile_image, size:'250x250' %></div>
-<table class="table mt-4 table">
+<table class="table mt-4 table" style="table-layout:fixed;width:100%;">
   <tr>
-	  <th>会員名: <%= customer.name %></th>
+	  <th class="col-xs-2">会員名: <%= customer.name %></th>
   </tr>
   <tr>
-	  <th style="word-wrap: break-word; width: 100px;">自己紹介<br><%= customer.introduction %></th>
+	  <th class="col-xs-3" style="word-wrap: break-word; width: 200px;">自己紹介<br><%= customer.introduction %></th>
   </tr>
   <tr>
     <th>フォロー数:<%= link_to customer.followings.count, customer_followings_path(customer.id) %></th>

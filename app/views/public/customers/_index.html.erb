@@ -9,11 +9,11 @@
   <tbody>
     <% customers.each do |customer| %>
       <tr>
-        <td><%= image_tag customer.get_profile_image, size: '50x50' %></td>
-        <td><%= customer.name %></td>
-        <td>フォロー数<%= customer.followings.count %></td>
-        <td>フォロワー数<%= customer.followers.count %></td>
-        <td>
+        <td><%= image_tag customer.get_profile_image, size: '100x100' %></td>
+        <td class="pt-5"><%= customer.name %></td>
+        <td class="pt-5">フォロー数<%= customer.followings.count %></td>
+        <td class="pt-5">フォロワー数<%= customer.followers.count %></td>
+        <td class="pt-5">
           <% unless current_customer == customer %>
            <% if current_customer.following?(customer) %>
              <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "btn btn-info rounded-pill" %>
@@ -22,8 +22,7 @@
            <% end %>
           <% end %>
         </td>
-
-        <td><%= link_to '会員詳細', customer_path(customer) %></td>
+        <td class="pt-5"><%= link_to '会員詳細', customer_path(customer) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,36 +1,40 @@
-<table class="table table-hover table-inverse">
-  <% if @range == "会員名" %>
-    <h2>"<%= @text %>"の検索結果</h2>
-    <tbody>
-      <% @customers.each do |customer| %>
-        <tr>
-          <td><%= image_tag customer.get_profile_image, size: '50x50' %></td>
-          <td><%= customer.name %></td>
-          <td><%= link_to '会員詳細', customer %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
-    <h2>"<%= @text %>"の検索結果</h2>
-    <thead>
-      <tr>
-        <th>会員名</th>
-        <th>城名</th>
-        <th>投稿文</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= link_to(post.customer) do %>
-            <%= image_tag post.customer.get_profile_image, size:'50x50' %>
+<!--<div class="container text-center" style="margin-left: 500px;">-->
+  <!--<div class="row col-7">-->
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <% if @range == "会員名" %>
+        <h2>"<%= @text %>"の検索結果</h2>
+        <%= render 'public/customers/index',customers: @customers %>
+      <% else %>
+        <h2>"<%= @text %>"の検索結果</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>城名</th>
+              <th>投稿文</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td class="text-center"><%= image_tag post.image, size: "100x100" %></td>
+                <td class="pt-5"><%= link_to post.castle,post %></td>
+                <td class="pt-5 text-truncate" style="max-width: 400px;"><%= post.body %></td>
+              </tr>
             <% end %>
-          </td>
-          <td><%= link_to post.castle,post %></td>
-          <td><%= post.body %></td>
-        </tr>
+          </tbody>
+        </table>
       <% end %>
-    </tbody>
+    </div>
+  </div>
+</div>
+<div style="position: fixed; bottom: 100px; margin-left: 375px;">
+  <% if @range == "会員名" %>
+    <%= paginate @customers %>
+  <% else %>
+    <%= paginate @posts %>
   <% end %>
-</table>
+</div>

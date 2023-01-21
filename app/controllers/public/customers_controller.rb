@@ -10,10 +10,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def index
-    @customers = Customer.page(params[:page]).per(5)
     @post = Post.new
     @posts = Post.all
-    @customers = Customer.where(is_deleted: false)
+    @customers = Customer.where(is_deleted: false).page(params[:page]).per(5)
   end
 
   def edit
