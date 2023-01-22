@@ -1,13 +1,10 @@
 <% visiter = notification.visiter %>
 <% post = notification.post %>
 
-<div class="user-view clearfix ">
+<div class="user-view pt-2 clearfix">
   <%= link_to customer_path(notification.visiter) do %>
-    <%=  image_tag notification.visiter.get_profile_image, class:"user-thumb", style:"width: 60px;"%>
+    <%=  image_tag notification.visiter.get_profile_image, class:"user-thumb", size:"60x60"%>
   <% end %>
   <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
   <br>
-  <% if !@comment.nil? %>
-    <p class="moderate-font"><%= @comment %></p>
-  <% end %>
 </div>

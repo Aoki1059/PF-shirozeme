@@ -6,8 +6,10 @@ module Public::NotificationsHelper
   
   def notification_form(notification)
     @comment = nil
-    visiter = link_to notification.visiter.name, notification.visiter, style:"font-weight: bold;"
-    your_post = link_to 'あなたの投稿', notification.post, style:"font-weight: bold;", remote: true
+    visiter = notification.visiter.name
+    your_post = "あなたの投稿"
+    # visiter = link_to notification.visiter.name, notification.visiter, style:"font-weight: bold;"
+    # your_post = link_to "あなたの投稿", notification.post, style:"font-weight: bold;", remote: true
     case notification.action
       when "follow" then
         "#{visiter}があなたをフォローしました"

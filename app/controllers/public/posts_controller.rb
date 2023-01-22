@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
     @post_new = Post.new
     @comment = Comment.new
     @customer = current_customer
-    @comments = Comment.page(params[:page]).per(10)
+    @comments = @post.comments.order('created_at DESC').page(params[:page]).per(12)
   end
 
   def index

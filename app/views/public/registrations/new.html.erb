@@ -1,5 +1,5 @@
 <div class= "text-center">
-  <div class="row ">
+  <div class="row">
     <div class="col-mx-offset-1 col-sm-11">
       <h2 class="head-line title_h2">新規会員登録</h2>
       <%= form_with(model: @customer, url: registration_path(resource_name) )do |f| %>
@@ -26,7 +26,7 @@
 
         <div class="actions">
           <%= f.label :"  ", class: "col-sm-3 form-control-static" %>
-          <%= f.submit "新規登録",class: 'btn btn-success btn-lg col-sm-3' %>
+          <%= f.submit "新規登録",class: "btn btn-success btn-lg col-sm-3 rounded-pill" %>
         </div>
       <% end %>
 
