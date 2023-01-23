@@ -3,8 +3,8 @@ before_action :authenticate_admin!
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts
-    @posts = @customer.posts.page(params[:page]).per(9)
+    # @posts = @customer.posts
+    @posts = @customer.posts.page(params[:page]).per(5)
   end
 
   def index

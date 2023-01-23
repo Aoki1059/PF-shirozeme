@@ -1,14 +1,12 @@
-<table class='table'>
-  <tr><%= image_tag customer.get_profile_image, size:'100x100' %></tr>
+<div class="profile_image text-center"><%= image_tag customer.get_profile_image, size:'200x200' %></div>
+<table class="table mt-4 table" style="table-layout:fixed;width:100%;">
   <tr>
-	  <th>会員名</th>
-	  <th><%= customer.name %></th>
+	  <th class="col-xs-2">会員名<br><%= customer.name %></th>
   </tr>
   <tr>
-	  <th>自己紹介</th>
-	  <th><%= customer.introduction %></th>
+	  <th class="col-xs-3" style="word-wrap: break-word; width: 200px;">自己紹介<br><%= customer.introduction %></th>
   </tr>
 </table>
-<div>
-  <%= link_to "退会", admin_customers_withdraw_path(@customer.id), method: :patch, data: {confirm: "本当に退会させますか？"}, class: "glyphicon glyphicon-tint btn-lg btn-danger ml-5" %>
+<div class="text-center">
+  <%= link_to "退会", admin_customers_withdraw_path(@customer.id), method: :patch, data: {confirm: "本当に退会させますか？"}, class: "glyphicon glyphicon-tint btn-lg btn-danger rounded-pill" %>
 </div>
