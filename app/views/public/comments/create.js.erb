@@ -1,4 +1,4 @@
 <% if !@comment.new_record? %>
-  $("#comment__lines").prepend("<%= j(render 'public/comments/comment', comment: @comment) %>");
+  $("#comment__lines").prepend("<%= j(render "public/comments/comment", comment: @comment) %>");
   $("#comment__form--input").val("");
 <% end %>

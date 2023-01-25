@@ -3,27 +3,12 @@ before_action :authenticate_admin!
 
   def show
     @customer = Customer.find(params[:id])
-    # @posts = @customer.posts
     @posts = @customer.posts.page(params[:page]).per(5)
   end
 
   def index
     @customers = Customer.where(is_deleted: false)
     @customers = @customers.page(params[:page]).per(5)
-  end
-
-  def edit
-    @customer = Customer.find(params[:id])
-  end
-
-  def update
-    @customer = Customer.find(params[:id])
-    if @customer.update(customer_params)
-      flash[:notice] = "You have updated customer successfully."
-      redirect_to admin_customer_path(@customer)
-    else
-      render :edit
-    end
   end
 
   def withdraw

@@ -1,4 +1,4 @@
 <%= form_with(model:[post, comment], local: false) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: "form-control", id: "comment__form--input" %>
+  <%= f.text_area :comment, rows:"5",placeholder: "コメントをここに", class: "form-control", id: "comment__form--input" %>
   <%= f.submit "コメントする", class: "btn btn-primary rounded-pill btn-lg mt-3" %>
 <% end %>

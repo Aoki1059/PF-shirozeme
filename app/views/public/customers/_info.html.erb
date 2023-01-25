@@ -1,4 +1,4 @@
-<div class="profile_image text-center"><%= image_tag customer.get_profile_image, size:'250x250' %></div>
+<div class="profile_image text-center"><%= image_tag customer.get_profile_image, size:"250x250" %></div>
 <table class="table mt-4 table" style="table-layout:fixed;width:100%;">
   <tr>
 	  <th class="col-xs-2">会員名: <%= customer.name %></th>
@@ -13,7 +13,6 @@
     <th>フォロワー : <%= link_to customer.followers.count, customer_followers_path(customer.id) %></th>
   </tr>
 </table>
-
 <div class="text-center">
 <% unless current_customer == customer %>
   <% if current_customer.following?(customer) %>
@@ -23,7 +22,6 @@
   <% end %>
 <% end %>
 </div>
-
 <div class="ml-5">
 <% if customer == current_customer %>
   <p><%= link_to "　　　編集　　　", edit_customer_path, class: "glyphicon glyphicon-pencil btn btn-success rounded-pill" %></p>

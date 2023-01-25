@@ -1,15 +1,15 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-8 offset-md-1'>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
   		<h2>見どころ</h2>
   		<div>
   		  <p><%= image_tag @post.get_image, size:"700x400" %></p>
   		</div>
-  		<table class='table'>
+  		<table class="table">
   		  <tr>
   		    <td>会員名: <%= @post.customer.name %></td>
           <td>城名: <%= @post.castle %></td>
-          <td><%= link_to '削除する', admin_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger rounded-pill"%></td>
+          <td><%= link_to "削除する", admin_post_path(@post.id), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger rounded-pill"%></td>
         </tr>
       </table>
       <div class="h5 col-xs-4" style="word-wrap: break-word; width: 725px;">

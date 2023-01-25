@@ -1,51 +1,46 @@
-<!--<div class='container'>-->
-  <div class="row">
-    <div class="col-md-6">
-      <h2 class="mt-3 text-center">見どころ</h2>
-  		<div class="w-100 text-center">
-  		  <p><%= image_tag @post.get_image, size:"700x400" %></p>
-  		</div>
-  		<table class="table text-center">
-  		  <tr>
-  		    <td class="h5 pt-4"><%= link_to(@post.customer) do %>
-            <%= @post.customer.name %>
-            <% end %>
-          </td>
-          <td class="h5 pt-4"><%= @post.castle %></td>
-
-          <% if @post.bookmarked_by?(current_customer) %>
-            <td class="h5 pt-4"><%= link_to "ブックマーク解除", post_bookmark_path(@post), method: :delete, class: "btn btn-sm btn-dark rounded-pill" %></td>
-          <% else %>
-            <td class="h5 pt-4"><%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post, class: "btn btn-sm btn-dark rounded-pill" %></td>
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="mt-3 text-center">見どころ</h2>
+		<div class="w-100 text-center">
+		  <p><%= image_tag @post.get_image, size:"700x400" %></p>
+		</div>
+		<table class="table text-center">
+		  <tr>
+		    <td class="h5 pt-4"><%= link_to(@post.customer) do %>
+          <%= @post.customer.name %>
           <% end %>
+        </td>
+        <td class="h5 pt-4"><%= @post.castle %></td>
+        <% if @post.bookmarked_by?(current_customer) %>
+          <td class="h5 pt-4"><%= link_to "ブックマーク解除", post_bookmark_path(@post), method: :delete, class: "btn btn-sm btn-dark rounded-pill" %></td>
+        <% else %>
+          <td class="h5 pt-4"><%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post, class: "btn btn-sm btn-dark rounded-pill" %></td>
+        <% end %>
 
-          <% if @post.customer_id == current_customer.id %>
-            <td class="h5 pt-4"><%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success rounded-pill" %></td>
-            <td class="h5 pt-4"><%= link_to "削除する", @post, method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger rounded-pill"%></td>
-          <% end %>
-        </tr>
-      </table>
-      <div style="margin-left: 50px;">
-        <h5>感想 :</h5>
-        <div class="h5 col-xs-4" style="word-wrap: break-word; width: 750px;">
-          <%= @post.body %>
-        </div>
+        <% if @post.customer_id == current_customer.id %>
+          <td class="h5 pt-4"><%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success rounded-pill" %></td>
+          <td class="h5 pt-4"><%= link_to "削除する", @post, method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger rounded-pill"%></td>
+        <% end %>
+      </tr>
+    </table>
+    <div style="margin-left: 50px;">
+      <h5>感想 :</h5>
+      <div class="h5 col-xs-4" style="word-wrap: break-word; width: 750px;">
+        <%= @post.body %>
       </div>
     </div>
-
-    <div class='col-md-6 mt-5'>
-      <div class='comment'>
-        <div class='col-md-8'>
-          <div id="comments-index">
-            <%= render "public/comments/index", comments: @comments %>
-          </div>
-          <%= paginate @comments %>
-          <!--<div style="position: fixed; bottom: 375px;"><%#= paginate @comments %></div>-->
-          <div id="comments-form" class="text-center" style="position: fixed; bottom: 175px; width: 600px;">
-            <%= render "public/comments/form", post: @post, comment: @comment %>
-          </div>
+  </div>
+  <div class="col-md-6 mt-5">
+    <div class="comment">
+      <div class="col-md-8">
+        <div id="comments-index">
+          <%= render "public/comments/index", comments: @comments %>
+        </div>
+        <%= paginate @comments %>
+        <div id="comments-form" class="text-center" style="position: fixed; bottom: 175px; width: 600px;">
+          <%= render "public/comments/form", post: @post, comment: @comment %>
         </div>
       </div>
     </div>
   </div>
-<!--</div>-->
+</div>

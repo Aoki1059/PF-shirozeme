@@ -1,7 +1,7 @@
 <table>
   <tbody id="comment__lines">
-      <% comments.each do |comment| %>
-        <%= render 'public/comments/comment', comment: comment %>
-      <% end %>
+    <% comments.each do |comment| %>
+      <%= render "public/comments/comment", comment: comment %>
+    <% end %>
   </tbody>
 </table>

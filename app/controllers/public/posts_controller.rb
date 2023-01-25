@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-
+  
   before_action :authenticate_customer!, only: [:create, :edit, :update, :destroy]
 
   def show
@@ -11,7 +11,6 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    #@posts = Post.all
     @posts = Post.published.page(params[:page]).per(6)
     @post = Post.new
     @customer = current_customer

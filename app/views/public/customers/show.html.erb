@@ -1,12 +1,12 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3'>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
       <h2>会員情報</h2>
-      <%= render 'info', customer: @customer %>
+      <%= render "info", customer: @customer %>
     </div>
-    <div class='col-md-8 offset-md-1'>
+    <div class="col-md-8 offset-md-1">
       <h2>投稿した見どころ</h2>
-      <%= render 'public/posts/index',posts: @posts %>
+      <%= render "public/posts/index",posts: @posts %>
       <%= paginate @posts %>
     </div>
   </div>

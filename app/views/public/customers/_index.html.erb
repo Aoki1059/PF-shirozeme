@@ -1,4 +1,4 @@
-<table class='table'>
+<table class="table">
   <thead>
     <tr>
       <th></th>
@@ -9,7 +9,7 @@
   <tbody>
     <% customers.each do |customer| %>
       <tr>
-        <td><%= image_tag customer.get_profile_image, size: '100x100' %></td>
+        <td><%= image_tag customer.get_profile_image, size: "100x100" %></td>
         <td class="pt-5"><%= customer.name %></td>
         <td class="pt-5">フォロー数<%= customer.followings.count %></td>
         <td class="pt-5">フォロワー数<%= customer.followers.count %></td>
@@ -22,7 +22,7 @@
            <% end %>
           <% end %>
         </td>
-        <td class="pt-5"><%= link_to '会員詳細', customer_path(customer) %></td>
+        <td class="pt-5"><%= link_to "会員詳細", customer_path(customer) %></td>
       </tr>
     <% end %>
   </tbody>
