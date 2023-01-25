@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
 
   devise_scope :customer do
-    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    post "customers/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
 
   scope module: :public do
@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     patch "/customers/withdraw" => "customers#withdraw"
     resources :customers, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'relationships#followers', as: 'followers'
+      get "followings" => "relationships#followings", as: "followings"
+      get "followers" => "relationships#followers", as: "followers"
     end
     get "search" => "searches#search"
   end
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get '/' => "homes#top"
+    get "/" => "homes#top"
     patch "/customers/withdraw" => "customers#withdraw"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :posts, only:[:index, :show, :destroy]
