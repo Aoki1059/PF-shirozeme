@@ -8,15 +8,15 @@ class Customer < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  
+
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  
+
   def create_notification_follow!(current_customer)
     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_customer.id, id, 'follow'])
     if temp.blank?
@@ -27,14 +27,14 @@ class Customer < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   def self.guest
     find_or_create_by!(name: 'ゲスト' ,email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
       customer.name = "ゲスト"
     end
   end
-  
+
   def follow(customer_id)
     relationships.create(followed_id: customer_id)
   end
@@ -49,13 +49,13 @@ class Customer < ApplicationRecord
   validates :introduction, length: {maximum: 50}
 
   def self.looks(search, word)
-   if search == "perfect_match" #完全一致
+   if search == "perfect_match"
      @customer = Customer.where("name LIKE?","#{word}")
-   elsif search == "forward_match" #前方一致
+   elsif search == "forward_match"
      @customer = Customer.where("name LIKE?","#{word}%")
-   elsif search == "backward_match" #後方一致
+   elsif search == "backward_match"
      @customer = Customer.where("name LIKE?","%#{word}")
-   elsif search == "partial_match" #部分一致
+   elsif search == "partial_match"
      @customer = Customer.where("name LIKE?","%#{word}%")
    else
      @customer = Customer.all
