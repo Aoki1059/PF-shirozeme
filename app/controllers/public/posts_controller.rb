@@ -11,7 +11,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.published.page(params[:page]).per(6)
+    @posts = Post.published.order('created_at DESC').page(params[:page]).per(6)
     @post = Post.new
     @customer = current_customer
   end
