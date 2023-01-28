@@ -21,10 +21,11 @@
                 <%= bookmark.post.castle %>
               <% end %>
             </td>
-            <td class="text-truncate"><%= bookmark.post.body %></td>
+            <td class="text-truncate" style="max-width: 150px;"><%= bookmark.post.body %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @bookmarks %>
   </div>
 </div>

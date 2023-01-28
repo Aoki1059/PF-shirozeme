@@ -7,8 +7,7 @@ before_action :authenticate_admin!
   end
 
   def index
-    @customers = Customer.where(is_deleted: false)
-    @customers = @customers.page(params[:page]).per(5)
+    @customers = Customer.where(is_deleted: false).page(params[:page]).per(5)
   end
 
   def withdraw

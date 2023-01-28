@@ -1,4 +1,4 @@
-# 城攻め
+# いざ、城攻め
 
 ## サイト概要
 ### サイトテーマ
@@ -18,7 +18,8 @@
 巡ったお城に関する投稿を行う時、お城についての投稿を閲覧する時、旅行の行き先を計画する時、趣味について話す時
 
 ## 設計書
-現在作成中です
+テーブル定義書、アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/1SQukOO1uqu2eKGSwbiyXlajyZbKTk5jZobXt3Z6F8gE/edit#gid=210182364
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -26,6 +27,3 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
-使用検討中です
