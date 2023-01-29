@@ -3,7 +3,7 @@
     <div class="col-md-3 mr-5 mt-5">
       <div class="img_field">
         <%= link_to post_path(post.id) do %>
-          <%= image_tag post.image, size: "235x135" %>
+          <%= image_tag post.get_image, size: "235x135" %>
         <% end %>
       </div>
       <p class="castle mt-2">
