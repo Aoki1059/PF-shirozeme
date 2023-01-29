@@ -26,6 +26,6 @@
 <% if customer == current_customer %>
   <p><%= link_to "　　　編集　　　", edit_customer_path, class: "glyphicon glyphicon-pencil btn btn-success rounded-pill" %></p>
   <p><%= link_to "　　　退会　　　", customers_unsubscribe_path, data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger rounded-pill"%></p>
-  <p><%= link_to "ブックマーク一覧", post_bookmarks_path(@post), class: "glyphicon glyphicon-pencil btn btn-dark rounded-pill" %></p>
+  <p><%= link_to "ブックマーク一覧", post_bookmarks_path(@posts), class: "glyphicon glyphicon-pencil btn btn-dark rounded-pill" %></p>
 <% end %>
 </div>
