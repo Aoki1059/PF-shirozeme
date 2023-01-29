@@ -51,7 +51,7 @@ class Post < ApplicationRecord
 
   def get_image
     unless image.attached?
-     file_path = Rails.root.join('app/assets/images/castle.jpeg')
+     file_path = Rails.root.join('app/assets/images/castle.jpg')
      image.attach(io: File.open(file_path), filename: 'busyou.png', content_type: 'image/png')
     end
     image
