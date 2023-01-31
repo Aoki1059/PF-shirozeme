@@ -7,14 +7,21 @@ before_action :authenticate_admin!
   end
 
   def index
-    @customers = Customer.where(is_deleted: false).page(params[:page]).per(5)
+    @customers = Customer.page(params[:page]).per(10)
   end
 
-  def withdraw
-    @customer = Customer.find(params[:format])
-    @customer.update(is_deleted: true)
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to admin_customers_path(@customer)
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      flash[:notice] = "編集しました"
+      redirect_to admin_customer_path(@customer)
+    else
+      render :edit
+    end
   end
 
   def customer_params
