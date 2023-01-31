@@ -1,5 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :ensure_guest_customer, only: [:create, :destroy, :followings, :followers]
 
   def create
     @customer = Customer.find(params[:customer_id])
@@ -21,5 +22,13 @@ class Public::RelationshipsController < ApplicationController
   def followers
     customer = Customer.find(params[:customer_id])
     @customers = customer.followers.page(params[:page]).per(5)
+  end
+  
+  private
+  def ensure_guest_customer
+    @customer = current_customer
+    if @customer.name == "ゲスト"
+      redirect_to customer_path(current_customer)
+    end
   end
 end

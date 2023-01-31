@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-
+  before_action :ensure_guest_customer, only: [:create, :destroy]
 
   def create
     @post = Post.find(params[:post_id])
@@ -19,6 +19,13 @@ class Public::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment)
+  end
+
+  def ensure_guest_customer
+    @customer = current_customer
+    if @customer.name == "ゲスト"
+      redirect_to post_path(@post)
+    end
   end
 end
 

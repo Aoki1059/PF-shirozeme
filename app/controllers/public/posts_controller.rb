@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
-  
   before_action :authenticate_customer!, only: [:create, :edit, :update, :destroy]
+  before_action :ensure_guest_customer, only: [:create]
 
   def show
     @post = Post.find(params[:id])
@@ -49,5 +49,12 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:castle, :image, :body, :is_published_flag)
+  end
+
+  def ensure_guest_customer
+    @customer = current_customer
+    if @customer.name == "ゲスト"
+      redirect_to posts_path
+    end
   end
 end

@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_guest_customer, only: [:edit]
+  before_action :ensure_guest_customer, only: [:edit, :update, :unsubscribe, :withdraw]
   
   def show
     @customer = Customer.find(params[:id])
@@ -46,9 +46,9 @@ class Public::CustomersController < ApplicationController
   end
   
   def ensure_guest_customer
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     if @customer.name == "ゲスト"
-      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to customer_path(current_customer)
     end
   end
 end

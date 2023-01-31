@@ -6,7 +6,15 @@
   <tr>
 	  <th class="col-xs-3" style="word-wrap: break-word; width: 200px;">自己紹介<br><%= customer.introduction %></th>
   </tr>
+  <tr>
+    <th class="col-xs-4">ステータス:</th>
+    <% if @customer.is_deleted == false %>
+      <th class="text-success font-weight-bold">有効</th>
+    <% else %>
+      <th class="text-muted font-weight-bold">退会</th>
+    <% end %>
+  </tr>
+  <tr>
+    <th><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></th>
+  </tr>
 </table>
-<div class="text-center">
-  <%= link_to "退会", admin_customers_withdraw_path(@customer.id), method: :patch, data: {confirm: "本当に退会させますか？"}, class: "glyphicon glyphicon-tint btn-lg btn-danger rounded-pill" %>
-</div>

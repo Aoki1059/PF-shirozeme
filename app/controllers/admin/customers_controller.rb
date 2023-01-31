@@ -18,6 +18,6 @@ before_action :authenticate_admin!
   end
 
   def customer_params
-    params.require(:customer).permit(:name, :introduction, :profile_image)
+    params.require(:customer).permit(:name, :introduction, :profile_image, :is_deleted)
   end
 end
