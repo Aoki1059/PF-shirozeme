@@ -36,13 +36,13 @@ class Post < ApplicationRecord
   end
 
   def self.looks(search, word)
-    if search == "perfect_match" #完全一致
+    if search == "perfect_match"
       @post = Post.where("castle LIKE?","#{word}")
-    elsif search == "forward_match" #前方一致
+    elsif search == "forward_match"
       @post = Post.where("castle LIKE?","#{word}%")
-    elsif search == "backward_match" #後方一致
+    elsif search == "backward_match"
       @post = Post.where("castle LIKE?","%#{word}")
-    elsif search == "partial_match" #部分一致
+    elsif search == "partial_match"
       @post = Post.where("castle LIKE?","%#{word}%")
     else
       @post = Post.all
