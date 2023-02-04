@@ -1,5 +1,5 @@
 <%= form_with model: @post,local:true do |f| %>
-  <%= f.file_field :image, accept: "image/*", class: "w-100 mt-5" %>
+  <%= f.file_field :image, accept: "image/*", class: "image w-100 mt-5" %>
   <div class="form-group mt-3">
     <%= f.label :castle, "城名" %>
     <%= f.text_field :castle, class: "form-control", placeholder:"例：丸岡城" %>

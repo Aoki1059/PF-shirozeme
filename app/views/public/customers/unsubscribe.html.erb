@@ -1,19 +1,16 @@
-<div class="container">
+<div class="container" style="margin-top: 160px; margin-bottom: 200px;">
   <div class="row">
     <div class="col text-center m-5">
-      <h2><strong>本当に退会しますか？</strong></h2>
-
-    <div class="unsubscribe-msg mt-5">
-      <strong>
-      退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
-   　　再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
-   　　本当に退会してよろしいですか？
-      </strong>
-    </div>
-    <div class="bottom mt-4">
-      <%= link_to "退会しない", customers_path, class: "glyphicon glyphicon-home btn-lg btn-primary" %>
-      <%= link_to "退会する", customers_withdraw_path, method: :patch, data: {confirm: "本当に退会してもよろしいですか？"}, class: "glyphicon glyphicon-tint btn-lg btn-danger ml-5" %>
-    </div>
+      <h2 class="text">本当に退会しますか？</h2>
+      <div class="text unsubscribe-msg mt-5">
+        退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
+     　　再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
+     　　本当に退会してよろしいですか？
+      </div>
+      <div class="bottom mt-4">
+        <%= link_to "退会しない", customer_path(@current_customer), class: "btn glyphicon glyphicon-home btn-lg btn-primary rounded-pill" %>
+        <%= link_to "退会する", customers_withdraw_path, method: :patch, data: {confirm: "本当に退会してもよろしいですか？"}, class: "btn glyphicon glyphicon-tint btn-lg btn-danger ml-5 rounded-pill" %>
+      </div>
     </div>
   </div>
 </div>

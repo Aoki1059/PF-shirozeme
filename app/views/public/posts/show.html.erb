@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <h2 class="mt-3 text-center">見どころ</h2>
+    <h2 class="post mt-3 text-center">見どころ</h2>
 		<div class="w-100 text-center">
 		  <p><%= image_tag @post.get_image, size:"700x400", class: "image_contain" %></p>
 		</div>
@@ -25,7 +25,7 @@
     </table>
     <div style="margin-left: 50px;">
       <h5>感想 :</h5>
-      <div class="h5 col-xs-4" style="word-wrap: break-word; width: 750px;">
+      <div class="body h5 col-xs-4" style="word-wrap: break-word; width: 750px;">
         <%= @post.body %>
       </div>
     </div>

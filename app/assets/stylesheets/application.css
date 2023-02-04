@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.font,.title,.text,.btn,.follow,.follower,.name,.post,.castle,.nav,.about,.status,.notice,
+.body,.edit,.form-group,.table,.form-control,.show,.back,.image,.comment,.customers-index {
+  font-family: "Hannari";
+}

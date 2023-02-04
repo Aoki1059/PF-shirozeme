@@ -7,7 +7,7 @@
 	  <th class="col-xs-3" style="word-wrap: break-word; width: 200px;">自己紹介<br><%= customer.introduction %></th>
   </tr>
   <tr>
-    <th class="col-xs-4">ステータス:</th>
+    <th class="status col-xs-4">ステータス:</th>
     <% if @customer.is_deleted == false %>
       <th class="text-success font-weight-bold">有効</th>
     <% else %>
