@@ -1,7 +1,8 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
   before_action :ensure_guest_customer, only: [:edit, :update, :unsubscribe, :withdraw]
-  
+
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts.order('created_at DESC').page(params[:page]).per(6)
@@ -17,7 +18,7 @@ class Public::CustomersController < ApplicationController
   def edit
     @customer = Customer.find(params[:id])
   end
-  
+
   def update
     @customer = current_customer
     if @customer.update(customer_params)
@@ -27,7 +28,7 @@ class Public::CustomersController < ApplicationController
        render :edit
     end
   end
-  
+
   def unsubscribe
   end
 
@@ -38,13 +39,20 @@ class Public::CustomersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
-  
+
   private
 
   def customer_params
     params.require(:customer).permit(:name, :introduction, :profile_image)
   end
-  
+
+  def ensure_correct_customer
+    @customer = Customer.find(params[:id])
+    unless @customer == current_customer
+      redirect_to customer_path(current_customer)
+    end
+  end
+
   def ensure_guest_customer
     @customer = current_customer
     if @customer.name == "ゲスト"
