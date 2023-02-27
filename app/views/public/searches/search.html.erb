@@ -4,6 +4,7 @@
       <% if @range == "会員名" %>
         <h2>"<%= @text %>"の検索結果</h2>
         <%= render "public/customers/index",customers: @customers %>
+        <%= paginate @customers %>
       <% else %>
         <h2>"<%= @text %>"の検索結果</h2>
         <table class="table">
@@ -25,14 +26,8 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @posts %>
       <% end %>
     </div>
   </div>
-</div>
-<div style="position: fixed; bottom: 100px; margin-left: 375px;">
-  <% if @range == "会員名" %>
-    <%= paginate @customers %>
-  <% else %>
-    <%= paginate @posts %>
-  <% end %>
 </div>
