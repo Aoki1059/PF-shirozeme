@@ -39,6 +39,20 @@
             <li class="nav-link">
               <%= render "public/searches/search" %>
             </li>
+          <% else %>
+            <div class="nav collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <li>
+                  <%= link_to "ホーム", root_path, class: "nav-link text-light" %>
+                </li>
+                <li>
+                  <%= link_to "新規登録", new_customer_registration_path, data: {"turbolinks" => false}, class: "nav-link text-light" %>
+                </li>
+                <li>
+                  <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-light" %>
+                </li>
+              </ul>
+            </div>
           <% end %>
         </ul>
       </div>
