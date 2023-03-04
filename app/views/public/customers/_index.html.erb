@@ -7,23 +7,27 @@
     </tr>
   </thead>
   <tbody>
-    <% customers.each do |customer| %>
-      <tr>
-        <td><%= image_tag customer.get_profile_image, size: "100x100" %></td>
-        <td class="pt-5"><%= customer.name %></td>
-        <td class="pt-5">フォロー数<%= customer.followings.count %></td>
-        <td class="pt-5">フォロワー数<%= customer.followers.count %></td>
-        <td class="pt-5">
-          <% unless current_customer == customer %>
-           <% if current_customer.following?(customer) %>
-             <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "btn btn-info rounded-pill" %>
-           <% else %>
-             <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class: "btn btn-success rounded-pill" %>
-           <% end %>
-          <% end %>
-        </td>
-        <td class="pt-5"><%= link_to "会員詳細", customer_path(customer) %></td>
-      </tr>
+    <% if customers.exists? %>
+      <% customers.each do |customer| %>
+        <tr>
+          <td><%= image_tag customer.get_profile_image, size: "100x100" %></td>
+          <td class="pt-5"><%= customer.name %></td>
+          <td class="pt-5">フォロー数<%= customer.followings.count %></td>
+          <td class="pt-5">フォロワー数<%= customer.followers.count %></td>
+          <td class="pt-5">
+            <% unless current_customer == customer %>
+             <% if current_customer.following?(customer) %>
+               <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "btn btn-info rounded-pill" %>
+             <% else %>
+               <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class: "btn btn-success rounded-pill" %>
+             <% end %>
+            <% end %>
+          </td>
+          <td class="pt-5"><%= link_to "会員詳細", customer_path(customer) %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <p class="h3">ユーザーはいません</p>
     <% end %>
   </tbody>
 </table>

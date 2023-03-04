@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8 offset-md-1">
     <h2>フォロー一覧</h2>
-    <%= render "follow_list", customers: @customers %>
+    <%= render "public/customers/index", customers: @customers %>
     <%= paginate @customers %>
     </div>
   </div>
