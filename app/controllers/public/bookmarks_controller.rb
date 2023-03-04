@@ -3,7 +3,6 @@ class Public::BookmarksController < ApplicationController
   before_action :ensure_guest_customer, only: [:index, :create, :destroy]
 
   def index
-    @customer = current_customer
     @bookmarks = Bookmark.where(customer_id: current_customer.id).page(params[:page]).per(6)
   end
 

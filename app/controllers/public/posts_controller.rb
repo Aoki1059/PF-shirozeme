@@ -5,16 +5,13 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post_new = Post.new
     @comment = Comment.new
-    @customer = current_customer
     @comments = @post.comments.order('created_at DESC').page(params[:page]).per(12)
   end
 
   def index
     @posts = Post.published.order('created_at DESC').page(params[:page]).per(6)
     @post = Post.new
-    @customer = current_customer
   end
 
   def create

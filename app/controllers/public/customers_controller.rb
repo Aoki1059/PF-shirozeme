@@ -6,12 +6,9 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts.order('created_at DESC').page(params[:page]).per(6)
-    @post = Post.new
   end
 
   def index
-    @post = Post.new
-    @posts = Post.all
     @customers = Customer.where(is_deleted: false).page(params[:page]).per(5)
   end
 
